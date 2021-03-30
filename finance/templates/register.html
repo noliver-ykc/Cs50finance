@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register a new account
+{% endblock %}
+
+{% block main %}
+<h3 class="start">START FOR FREE</h3>
+<h2>Welcome to the world of investing with CS50 finance</h2>
+    <h3 class="account-exists"> Already have an account? <a href="{{ url_for('login') }}" id="login">Log in</a></h3>
+    <div id="register-container">
+        <div id="form-entry-top">
+            <form action="/register" method="post" id="reg-form">
+
+                    <!--name, email, phone fields-->
+                    <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" name="name" placeholder="John Doe" required><br>
+                    <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" name="username" placeholder="john.doe" required><br>
+                    <label for="email" id="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="john@doe.com" required><br>
+
+                    <!--Personal touch: password verification-->
+                    <label for="pswd">Password</label>
+                        <input type="password" id="pswd" class="form-control" name="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        placeholder="*********"required><br>
+                    <label for="pswd_match">Confirm Password</label>
+                        <input type="password" id="pswd_match" class="form-control" name="pswd_match" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="must match previous password"
+                        placeholder="*********"required><br>
+                        <small>* Password must be 8+ characters, 1 number, 1 uppercase, 1 lowercase</small><br></br>
+
+                    <!--Personal touch 2: email alerts-->
+                    <input type="checkbox" id="newsletter" name="newsletter" value="newsletter">
+                        <label for="newsletter"> Yes, I would like to recieve CS50 finance emails</label><br>
+                    <input type="checkbox" id="terms" name="terms" value="terms">
+                        <label for="terms"> I agree to the Terms and Conditions</label><br>
+                    <button class="btn btn-primary submit-color" type="submit">Create account</button>
+            </form>
+        </div>
+        <!--personal touch, welcome image-->
+        <div>
+            <img id="register-img" src="https://i.imgur.com/U3CKRs6.jpg" alt="woman on computer">
+        </div>
+    </div>
+{% endblock %}

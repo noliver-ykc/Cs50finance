@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h2 class="title">Welcome Back to your CS50 finance gateway!</h2>
+
+<div id= "stock_info_box" class="mx-auto">
+    <img id="stock_img" src ="https://img.cloudygif.com/full/e014ea46dac77dac.gif" alt="stocks gif">
+
+    <!--Boostrap 4 Table Hover-->
+    <table id = "stock_display" class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      {% for stock in portfolio %}
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ portfolio['stock'].upper() }}</td>
+          <td>{{ portfolio['shares'] }}</td>
+          <td>{{ usd(portfolio['price']) }}</td>
+          <td>{{ usd(portfolio['total']) }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

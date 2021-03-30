@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2>Welcome Back to your CS50 finance gateway!</h2><br>
+    <p>Log in to join the party!</p>
+    <form action="/login" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form><br>
+    <p>First time? No problem! Register below.</p>
+    <form action="/register" method="GET">
+        <button class="btn btn-primary">Create an account</button>
+    </form>
+{% endblock %}
